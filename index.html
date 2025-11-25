@@ -2,290 +2,168 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Seni Crypto - Gabung ke komunitas crypto dan pelajari strategi untuk gandakan uang kamu. Bergabung dengan analisis pasar terbaik dan cara trading terukur." />
-  <meta name="keywords" content="crypto, komunitas crypto, trading, belajar crypto, analisis pasar, investasi, portofolio crypto" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Seni Crypto — Strategi Cerdas & Terukur</title>
   <style>
-    :root {
-      --gold-dark: #b7842d;
-      --gold-light: #ffd43b;
-      --gold-accent: linear-gradient(135deg, #ffd66b 0%, #ffefb3 50%, #fff7df 100%);
+    :root{
+      --gold-1: #fff8eb;
+      --gold-2: #fff3d6;
+      --gold-accent: linear-gradient(135deg,#ffd66b 0%, #ffefb3 50%, #fff7df 100%);
       --deep-gold: #c9972b;
-      --text-light: #f6f4f0;
+      --gold-bright: #ffd43b;
+      --silver: #c8ccd0;
       --muted: #8b8d8f;
-      --bg-dark: #131313;
-      --card-bg: rgba(255, 255, 255, 0.04);
-      --glass: rgba(255, 255, 255, 0.03);
-      --shadow-light: 0 8px 24px rgba(0, 0, 0, 0.3);
-      --shadow-dark: 0 8px 40px rgba(0, 0, 0, 0.5);
+      --bg: #0b0b0b;
+      --card-bg: rgba(255,255,255,0.04);
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --text: #f6f4f0;
+      --accent-dark: #2a2a2a;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#070606 0%, #0d0d0d 35%), radial-gradient(600px 300px at 10% 10%, rgba(255,210,90,0.04), transparent 10%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.5;
+      overflow-x:hidden;
     }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, rgba(7, 6, 6, 0.9), rgba(13, 13, 13, 0.8));
-      color: var(--text-light);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.5;
-    }
+    .wrap{ max-width:1100px; margin:0 auto; padding:40px 22px; }
 
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 22px;
-    }
-
-    /* Hero Section */
-    .hero {
-      display: grid;
+    .hero{
+      display:grid;
       grid-template-columns: 1fr 420px;
-      gap: 32px;
-      padding: 48px;
-      border-radius: 18px;
-      background: var(--card-bg);
-      box-shadow: var(--shadow-light);
+      gap:32px;
+      align-items:center;
+      padding:48px;
+      margin-top:18px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,245,210,0.03), rgba(255,245,210,0.015));
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
       backdrop-filter: blur(6px);
     }
 
-    @media (max-width: 980px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 28px;
-      }
+    @media (max-width:980px){
+      .hero{ grid-template-columns: 1fr; padding:28px; }
     }
 
-    .hero .left h1 {
-      margin: 0 0 12px 0;
-      font-weight: 700;
+    .hero .left h1{
+      margin:0 0 12px 0;
+      font-weight:700;
       font-size: clamp(22px, 4vw, 38px);
-      background: var(--gold-accent);
+      background: linear-gradient(90deg, #fffbe8 0%, #fff1c0 40%, #ffe078 100%);
       -webkit-background-clip: text;
       color: transparent;
     }
-
-    .hero .left p.subtitle {
-      margin: 0 0 20px 0;
-      color: var(--muted);
-      font-size: 15px;
+    .hero .left p.subtitle{
+      margin:0 0 20px 0;
+      color:var(--muted);
+      font-size:15px;
     }
 
-    .cta-row {
+    .cta-row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 18px; border-radius:10px; font-weight:700; cursor:pointer;
+      border: none; text-decoration:none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+      transition: transform .14s ease;
+    }
+    .btn.gold{ background: var(--gold-accent); color:var(--deep-gold); }
+    .btn.ghost{ background: transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text); }
+
+    .hero-right{
+      display:flex; flex-direction:column; gap:14px; align-items:stretch;
+    }
+
+    .vertical-stack{
+      position:fixed; right:18px; top:50%; transform:translateY(-50%);
+      display:flex; flex-direction:column; gap:12px; z-index:999;
+    }
+    .v-btn{
+      min-width:150px; max-width:210px;
+      border-radius:12px; padding:12px 14px;
+      text-align:center; font-weight:700;
+      background: linear-gradient(180deg,#fff9e9,#fff3d6);
+      color:var(--deep-gold);
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      cursor:pointer;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .v-btn.small{ min-width:130px; padding:10px; font-size:14px; }
+    .v-btn.disabled{
+      cursor:default; opacity:0.85;
+      background: rgba(255,255,255,0.02);
+      color:var(--muted);
+    }
+    .v-sub{ font-size:12px; color:var(--muted); }
+
+    .stats{ display:flex; gap:20px; align-items:center; margin-top:18px; }
+    .stat-item .big{ font-size:20px; font-weight:800; color:var(--gold-bright); }
+    .stat-item .label{ font-size:13px; color:var(--muted); }
+
+    section{ padding:70px 0; }
+    .features{ background: rgba(255,250,235,0.01); border-radius:14px; padding:30px; }
+    .features-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; }
+    @media (max-width:880px){ .features-grid{ grid-template-columns:1fr; } }
+    .feat{
+      background: var(--card-bg); padding:16px; border-radius:12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+    }
+    .feat h3{ margin:0 0 8px 0; color:var(--gold-bright); }
+
+    .pricing-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; }
+    @media (max-width:980px){ .pricing-grid{ grid-template-columns:1fr; } }
+
+    .card{
+      border-radius:14px; padding:18px;
+      background: rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.55);
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .title.silver{ color:var(--silver); font-weight:900; }
+    .title.orange{ color:#ffb347; font-weight:900; }
+    .title.gold{ background:linear-gradient(90deg,#ffd66b,#ffcc33);-webkit-background-clip:text;color:transparent;font-weight:900; }
+
+    .price-old{ text-decoration:line-through; color:rgba(255,255,255,0.45); }
+    .price-new{ font-size:22px; font-weight:900; }
+
+    .access-btn{
+      padding:10px 14px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      font-weight:800;
+      background:var(--deep-gold);
+      color:#0c0a05;
+    }
+
+    .final-join{
+      margin-top:18px; padding:20px;
+      border-radius:12px;
+      background: rgba(255,230,140,0.03);
+      display:flex; gap:16px; justify-content:space-between; flex-wrap:wrap;
+    }
+    .final-btn{
+      padding:14px 20px; border-radius:12px; font-weight:900;
+      background: linear-gradient(90deg,#ffd54a,#ffdc7a);
+      color:#2f1f00; border:none; cursor:pointer;
+    }
+
+    footer{ margin-top:40px; color:var(--muted); font-size:13px; text-align:center; padding:40px 20px; }
+
+    /* Styling for stats alignment */
+    .stats-bar{
       display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
-      box-shadow: var(--shadow-light);
-      background: var(--gold-accent);
-      color: var(--deep-gold);
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .cta-btn:active {
-      transform: translateY(2px);
-    }
-
-    /* Vertical Button Bar */
-    .vertical-bar {
-      position: fixed;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 1000;
-    }
-
-    .v-bar-btn {
-      background: var(--gold-light);
-      color: var(--deep-gold);
-      padding: 14px 18px;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: var(--shadow-light);
-    }
-
-    .v-bar-btn:hover {
-      background: var(--gold-accent);
-      transform: translateX(4px);
-    }
-
-    /* Statistics */
-    .stats {
-      display: flex;
-      gap: 20px;
-      margin-top: 18px;
-      font-weight: 700;
-      color: var(--gold-light);
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: flex-start;
-    }
-
-    .stat-item .big {
-      font-size: 22px;
-    }
-
-    .stat-item .label {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    /* Section Layout */
-    section {
-      padding: 70px 0;
-    }
-
-    .features {
-      background: var(--card-bg);
-      border-radius: 14px;
-      padding: 30px;
-      box-shadow: var(--shadow-dark);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    @media (max-width: 880px) {
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .feat {
-      background: var(--card-bg);
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: var(--shadow-light);
-    }
-
-    .feat h3 {
-      color: var(--gold-light);
-      font-size: 18px;
-    }
-
-    .feat p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Pricing Section */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    @media (max-width: 980px) {
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      border-radius: 14px;
-      padding: 18px;
-      background: var(--card-bg);
-      box-shadow: var(--shadow-dark);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .title {
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .price-old {
-      text-decoration: line-through;
-      color: rgba(255, 255, 255, 0.45);
-    }
-
-    .price-new {
-      font-size: 22px;
-      font-weight: 900;
-      margin-top: 6px;
-      color: var(--gold-light);
-    }
-
-    .access-btn {
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      background: var(--deep-gold);
-      color: #0c0a05;
-      border: none;
-      box-shadow: var(--shadow-light);
-    }
-
-    /* Final Join Button */
-    .final-join {
-      margin-top: 24px;
-      padding: 20px;
-      border-radius: 12px;
-      background: var(--card-bg);
-      display: flex;
-      gap: 16px;
       justify-content: space-between;
-      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
     }
-
-    .final-btn {
-      padding: 14px 20px;
-      border-radius: 12px;
-      font-weight: 900;
-      background: var(--gold-accent);
-      color: #2f1f00;
-      border: none;
-      cursor: pointer;
-      box-shadow: var(--shadow-dark);
-    }
-
-    footer {
-      margin-top: 40px;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    /* Small Helpers */
-    .muted {
-      color: var(--muted);
-    }
-
-    /* Smooth Scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
   </style>
 </head>
 
@@ -297,11 +175,11 @@
         <p class="subtitle">Gabung ke Komunitas dan Platform Belajar Crypto Sekarang.</p>
 
         <div class="cta-row">
-          <button class="cta-btn" id="btn-gabung-now">GABUNG SEKARANG</button>
-          <button class="cta-btn" id="btn-apa-yang-didapatkan">APA YANG KAMU DAPATKAN</button>
+          <button class="btn gold" id="btn-gabung-now">GABUNG SEKARANG</button>
+          <button class="btn ghost" id="btn-apa-yang-didapatkan">APA YANG KAMU DAPATKAN</button>
         </div>
 
-        <div class="stats">
+        <div class="stats-bar">
           <div class="stat-item">
             <div class="big">150+</div>
             <div class="label">Member</div>
@@ -316,94 +194,118 @@
           </div>
         </div>
       </div>
-      <div class="hero-right"></div>
+
+      <div class="hero-right">
+        <div style="text-align:right;">
+          <div style="font-size:12px; color:var(--muted);">Portofolio</div>
+          <div style="font-size:20px; font-weight:900; color:var(--gold-bright);">+57%</div>
+          <div style="font-size:13px; color:var(--muted);">Portofolio Terbuka</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Fitur Section -->
     <section id="apa-yang-didapatkan">
       <div class="features">
-        <h2>Yang Akan Kamu Dapatkan</h2>
+        <h2 style="margin-bottom:14px;">Yang Akan kamu dapatkan</h2>
         <div class="features-grid">
           <div class="feat">
             <h3>Market Update</h3>
-            <p>Update tentang kondisi pasar secara realtime, membantu kalian mengambil langkah yang tepat.</p>
+            <p>Update Tentang Kondisi Pasar Secara Realtime, membantu kalian mengambil langkah tepat.</p>
           </div>
           <div class="feat">
             <h3>Insight Update</h3>
-            <p>Selalu mendapatkan wawasan terbaru mengenai pasar crypto dan strategi trading.</p>
+            <p>Selalu Mendapatkan Wawasan Terbaru Mengenai Pasar dan strategi penting lainnya.</p>
           </div>
           <div class="feat">
             <h3>Share Top Analysis</h3>
-            <p>Berbagi analisis pasar dari analis terbaik yang akan membantu Anda mengoptimalkan keputusan trading.</p>
+            <p>Berbagi Analisa dari analis terbaik untuk mendukung keputusan tradingmu.</p>
           </div>
           <div class="feat">
             <h3>Trade Live Update</h3>
-            <p>Analisis pasar 24/7 dengan pembaruan dan sinyal trading secara langsung.</p>
+            <p>Analisa pasar dan sinyal real-time 24/7.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="pricing">
-      <h2>Paket Member</h2>
+      <h2 style="margin-bottom:10px;">Pricing — Gabung Jadi Member Sekarang</h2>
+
       <div class="pricing-grid">
-        <!-- Exclusive -->
         <div class="card">
-          <div class="title">Exclusive</div>
+          <div class="title silver">Exclusive</div>
           <div class="price-old">Rp350.000</div>
           <div class="price-new">Rp245.000</div>
           <button class="access-btn">AKSES SEKARANG</button>
         </div>
-        <!-- Exclusive+ -->
+
         <div class="card">
-          <div class="title">Exclusive+</div>
+          <div class="title orange">Exclusive+</div>
           <div class="price-old">Rp1.500.000</div>
           <div class="price-new">Rp525.000</div>
           <button class="access-btn">AKSES SEKARANG</button>
         </div>
-        <!-- Super Exclusive -->
+
         <div class="card">
-          <div class="title">Super Exclusive</div>
+          <div class="title gold">Super Exclusive</div>
           <div class="price-old">Rp3.500.000</div>
           <div class="price-new">Rp1.680.000</div>
           <button class="access-btn">AKSES SEKARANG</button>
         </div>
       </div>
 
-      <div class="final-join">
-        <div>
-          <div style="font-weight: 800;">Klik Tombol Di Bawah ini untuk Bergabung:</div>
-          <a href="https://lynk.id/senicrypto" target="_blank">
-            <button class="final-btn">AYO GABUNG SEKARANG!</button>
-          </a>
-        </div>
+      <div class="final-join" style="margin-top:24px;">
+        <div style="font-weight:800; font-size:18px;">Klik Tombol Di Bawah ini untuk Bergabung :</div>
+        <a href="https://lynk.id/senicrypto" target="_blank">
+          <button class="final-btn">AYO GABUNG SEKARANG!</button>
+        </a>
       </div>
     </section>
 
     <footer>
-      © <span id="year"></span> Seni Crypto — Semua konten edukasi dan komunitas.
+      © <span id="year"></span> Seni Crypto — Edukasi & Komunitas Trading Crypto.
     </footer>
   </div>
 
-  <!-- Vertical Buttons -->
-  <div class="vertical-bar">
-    <div class="v-bar-btn" id="v-join-now">GABUNG SEKARANG</div>
-    <div class="v-bar-btn" id="v-apa-yang">APA YANG KAMU DAPATKAN</div>
+  <div class="vertical-stack">
+    <div class="v-btn small" id="v-join-now">
+      GABUNG SEKARANG
+      <div class="v-sub">Ke Pricing</div>
+    </div>
+
+    <div class="v-btn small" id="v-apa-yang">
+      APA YANG KAMU DAPATKAN
+      <div class="v-sub">Scroll Fitur</div>
+    </div>
+
     <a href="https://discord.gg/uZxwH6k6x" target="_blank">
-      <div class="v-bar-btn">GABUNG KOMUNITAS DISCORD SEKARANG</div>
+      <div class="v-btn small">GABUNG KOMUNITAS DISCORD SEKARANG</div>
     </a>
+
+    <div class="v-btn small disabled">
+      PORTOFOLIO +57%
+      <div class="v-sub">Portofolio Terbuka</div>
+    </div>
   </div>
 
   <script>
-    // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Scroll to sections
-    document.getElementById('btn-gabung-now').onclick = () => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('btn-apa-yang-didapatkan').onclick = () => document.getElementById('apa-yang-didapatkan').scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('v-join-now').onclick = () => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('v-apa-yang').onclick = () => document.getElementById('apa-yang-didapatkan').scrollIntoView({ behavior: 'smooth' });
+    const scrollToPricing = () =>
+      document.getElementById('pricing').scrollIntoView({behavior:'smooth'});
+    const scrollToFitur = () =>
+      document.getElementById('apa-yang-didapatkan').scrollIntoView({behavior:'smooth'});
+
+    document.getElementById('btn-gabung-now').onclick = scrollToPricing;
+    document.getElementById('btn-apa-yang-didapatkan').onclick = scrollToFitur;
+
+    document.getElementById('v-join-now').onclick = scrollToPricing;
+    document.getElementById('v-apa-yang').onclick = scrollToFitur;
+
+    document.querySelectorAll('.access-btn').forEach(btn=>{
+      btn.onclick = () =>
+        document.querySelector('.final-join').scrollIntoView({behavior:'smooth'});
+    });
   </script>
 
 </body>
