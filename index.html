@@ -1,219 +1,281 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seni Crypto</title>
-    <style>
-        /* CSS Dasar untuk Tampilan Gelap dan Emas */
-        body {
-            background-color: #000000; /* Latar belakang Hitam Penuh */
-            color: #ffffff; /* Teks default Putih */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Mulai dari atas */
-            min-height: 100vh;
-            text-align: center;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Seni Crypto — Belajar Trading & Seni Kripto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-        .container {
-            width: 100%;
-            max-width: 400px;
-            padding: 40px 20px;
-        }
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#6ee7b7;
+      --muted:#9aa4b2;
+      --surface:#0b1220;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      font-family: "Inter", system-ui;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071021 0%, #061226 100%);
+      color:#e6eef6;
+      line-height:1.5;
+    }
 
-        /* Judul Utama */
-        .main-heading {
-            font-size: 2em;
-            font-weight: bold;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .site-header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(2,6,23,0.5);border-bottom:1px solid rgba(255,255,255,0.03);z-index:50}
+    .header-inner{display:flex;justify-content:space-between;align-items:center}
+    .brand{font-weight:800;font-size:20px;color:var(--accent);text-decoration:none}
+    .brand span{color:var(--muted)}
+    .nav{display:flex;gap:18px}
+    .nav a{color:var(--muted);text-decoration:none}
+    .nav a:hover{color:#fff}
+    .btn-outline{border:1px solid rgba(255,255,255,0.08);padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--muted)}
+    .menu-btn{display:none;background:none;border:0;color:#fff;font-size:20px}
 
-        /* Sub-Judul/Ajakan */
-        .sub-heading {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            color: #cccccc;
-        }
+    /* Hero */
+    .hero{padding:64px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 360px;gap:32px}
+    .hero-left h1{font-size:36px;margin:0 0 12px}
+    .lead{color:var(--muted);margin-bottom:18px}
+    .cta-row{display:flex;gap:12px}
+    .btn-primary{background:var(--accent);color:#04211a;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.06);padding:12px 18px;border-radius:10px;text-decoration:none;color:var(--muted)}
+    .hero-stats{display:flex;gap:18px;margin-top:18px;color:var(--muted);padding:0;list-style:none}
 
-        /* Tombol Utama (Emas) */
-        .main-button {
-            display: block;
-            background-color: #A37F00; /* Emas Gelap/Cokelat Emas */
-            color: #ffffff;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
+    /* Card sim */
+    .card-sim{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+    .sim-line{display:flex;justify-content:space-between;padding:6px 0;border-top:1px dashed rgba(255,255,255,0.03);color:var(--muted)}
 
-        .main-button:hover {
-            background-color: #C39F20; /* Emas sedikit lebih terang saat hover */
-        }
+    /* Sections */
+    .section{padding:48px 0}
+    .split{display:grid;grid-template-columns:1fr 420px;gap:20px}
+    .responsive-img{width:100%;border-radius:10px}
 
-        /* Kartu Statistik */
-        .stats-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
+    /* Features */
+    .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px}
+    .feature{background:rgba(255,255,255,0.03);padding:20px;border-radius:10px;border:1px solid rgba(255,255,255,0.04)}
 
-        .stat-card {
-            background-color: #1A1A1A; /* Abu-abu Gelap */
-            padding: 15px 10px;
-            border-radius: 8px;
-            flex: 1;
-            font-size: 0.9em;
-        }
+    /* Pricing */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+    .plan{background:rgba(255,255,255,0.03);padding:20px;text-align:center;border-radius:10px}
+    .plan.featured{transform:translateY(-8px);border:1px solid rgba(255,255,255,0.06)}
+    .price{color:var(--accent);font-size:22px;font-weight:800}
 
-        .stat-value {
-            font-weight: bold;
-            color: #C39F20; /* Warna Emas */
-            display: block;
-            margin-bottom: 5px;
-        }
+    /* Testimonials */
+    .testi-wrap{display:flex;align-items:center;gap:12px}
+    .t-btn{background:none;border:1px solid rgba(255,255,255,0.2);padding:8px 12px;border-radius:8px;color:#fff}
+    .testi-slider{flex:1;overflow:hidden}
+    .testi{display:none;padding:18px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:10px}
+    .testi.active{display:block}
 
-        /* Bagian Panggilan Alpha */
-        .alpha-section {
-            text-align: left;
-        }
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:none;color:white}
 
-        .alpha-header {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #C39F20; /* Emas */
-            border-bottom: 2px solid #1A1A1A;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* Footer */
+    .site-footer{padding:20px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.05)}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center}
 
-        .performance-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .performance-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #1A1A1A;
-        }
-
-        .performance-item:last-child {
-            border-bottom: none;
-        }
-
-        .logo-placeholder {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: #333333; /* Placeholder abu-abu untuk logo */
-            margin-right: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.8em;
-            color: #ffffff;
-        }
-
-        .coin-details {
-            flex-grow: 1;
-        }
-
-        .coin-name {
-            font-weight: bold;
-            color: #ffffff;
-            display: block;
-        }
-
-        .coin-info {
-            font-size: 0.8em;
-            color: #888888;
-        }
-
-        .coin-return {
-            font-weight: bold;
-            color: #00FF00; /* Hijau terang untuk persentase */
-            font-size: 1.1em;
-            min-width: 80px;
-            text-align: right;
-        }
-    </style>
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-grid, .split, .pricing-grid, .contact-grid {grid-template-columns:1fr;}
+      .features-grid{grid-template-columns:repeat(2,1fr);}
+      .nav{display:none}
+      .menu-btn{display:block}
+    }
+    @media(max-width:480px){
+      .features-grid{grid-template-columns:1fr;}
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Seni <span>Crypto</span></a>
 
-<div class="container">
-    <header>
-        <h1 class="main-heading">Strategi Cerdas Trading Crypto untuk **Menggandakan** Uang Anda.</h1>
-        <p class="sub-heading">Gabung ke komunitas dua arah kita sekarang</p>
-    </header>
+      <nav class="nav">
+        <a href="#about">Tentang</a>
+        <a href="#kursus">Kursus</a>
+        <a href="#testi">Testimoni</a>
+        <a href="#kontak" class="btn-outline">Gabung</a>
+      </nav>
 
-    <a href="#" class="main-button">GABUNG SEKARANG</a>
-
-    <div class="stats-grid">
-        <div class="stat-card">
-            <span class="stat-value">6.561</span>
-            Orang telah belajar
-        </div>
-        <div class="stat-card">
-            <span class="stat-value">Cuam 149%</span>
-            Portofolio Terbuka
-        </div>
+      <button id="menu-btn" class="menu-btn">☰</button>
     </div>
+  </header>
 
-    <div class="alpha-section">
-        <div class="alpha-header">
-            <span>🚀 ALPHA CALLS BY SENI CRYPTO</span>
-            <span style="color: #00FF00;">+149%</span>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1>Menggabungkan Seni & Strategi untuk Menguasai Crypto</h1>
+          <p class="lead">Belajar trading, manajemen risiko, dan seni NFT untuk hasil maksimal.</p>
+
+          <div class="cta-row">
+            <a href="#kursus" class="btn-primary">Mulai Sekarang</a>
+            <a href="#about" class="btn-ghost">Pelajari Dulu</a>
+          </div>
+
+          <ul class="hero-stats">
+            <li><strong>1.200+</strong> siswa</li>
+            <li><strong>95%</strong> puas</li>
+            <li><strong>30+</strong> modul</li>
+          </ul>
         </div>
-        
-        <ul class="performance-list">
-            
-            <li class="performance-item">
-                <div class="logo-placeholder">A</div>
-                <div class="coin-details">
-                    <span class="coin-name">ASTER</span>
-                    <span class="coin-info">Seni Crypto Calls in $0.18</span>
-                </div>
-                <div class="coin-return" style="color: #00FF00;">+1,235%</div>
-            </li>
 
-            <li class="performance-item">
-                <div class="logo-placeholder">XPL</div>
-                <div class="coin-details">
-                    <span class="coin-name">XPL</span>
-                    <span class="coin-info">Seni Crypto Calls in $0.50</span>
-                </div>
-                <div class="coin-return" style="color: #00FF00;">+245%</div>
-            </li>
+        <div>
+          <div class="card-sim">
+            <h4>Akun Demo Seni Crypto</h4>
+            <p class="muted">Portofolio</p>
+            <div class="sim-line"><span>Bitcoin</span><span>+3.8%</span></div>
+            <div class="sim-line"><span>Ethereum</span><span>-1.2%</span></div>
+            <a href="#kontak" class="btn-outline" style="margin-top:12px;display:inline-block">Dapatkan Akses</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <li class="performance-item">
-                <div class="logo-placeholder">AIA</div>
-                <div class="coin-details">
-                    <span class="coin-name">AIA</span>
-                    <span class="coin-info">Seni Crypto Calls in $1.20</span>
-                </div>
-                <div class="coin-return" style="color: #00FF00;">+205%</div>
-            </li>
+    <!-- ABOUT -->
+    <section id="about" class="section container">
+      <div class="split">
+        <div>
+          <h2>Mengapa Seni Crypto?</h2>
+          <p>Kami menggabungkan analisis pasar dan kreativitas untuk mempercepat proses belajarmu.</p>
+          <ul>
+            <li>Materi berbasis praktik</li>
+            <li>Komunitas aktif</li>
+            <li>Toolkit premium</li>
+          </ul>
+        </div>
 
-        </ul>
+        <div>
+          <img src="https://source.unsplash.com/collection/190727/800x600" class="responsive-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section container">
+      <h2>Yang Akan Kamu Pelajari</h2>
+      <div class="features-grid">
+        <div class="feature"><h4>Analisis Teknikal</h4><p>Baca chart & indikator.</p></div>
+        <div class="feature"><h4>Manajemen Risiko</h4><p>Strategi jangka panjang.</p></div>
+        <div class="feature"><h4>Strategi NFT</h4><p>Peluang seni digital.</p></div>
+        <div class="feature"><h4>Psikologi Trading</h4><p>Disiplin menghadapi pasar.</p></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="kursus" class="section container">
+      <h2>Paket & Kursus</h2>
+      <div class="pricing-grid">
+        <div class="plan">
+          <h3>Dasar</h3>
+          <div class="price">Rp 299.000</div>
+          <p>Akses modul awal</p>
+        </div>
+
+        <div class="plan featured">
+          <h3>Pro</h3>
+          <div class="price">Rp 799.000</div>
+          <p>Semua modul + mentoring</p>
+        </div>
+
+        <div class="plan">
+          <h3>Mentor</h3>
+          <div class="price">Rp 1.999.000</div>
+          <p>1-on-1 mentoring</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section id="testi" class="section container">
+      <h2>Testimoni</h2>
+      <div class="testi-wrap">
+        <button id="prev-t" class="t-btn">‹</button>
+
+        <div class="testi-slider">
+          <div class="testi active">
+            “Mentoringnya jelas & praktis — cocok untuk pemula.”<br>— Dita, Jakarta
+          </div>
+          <div class="testi">
+            “Modul NFT sangat membantu saya menjual karya pertama.”<br>— Rian, Bandung
+          </div>
+          <div class="testi">
+            “Komunitasnya aktif & suportif.”<br>— Siti, Surabaya
+          </div>
+        </div>
+
+        <button id="next-t" class="t-btn">›</button>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="kontak" class="section container">
+      <h2>Daftar / Hubungi</h2>
+
+      <div class="contact-grid">
+        <form id="form">
+          <input placeholder="Nama" required>
+          <input type="email" placeholder="Email" required>
+          <select><option>Dasar</option><option>Pro</option><option>Mentor</option></select>
+          <textarea rows="4" placeholder="Pesan..."></textarea>
+          <button class="btn-primary" style="margin-top:10px;width:100%">Kirim</button>
+        </form>
+
+        <div>
+          <p>Email: halo@senicrypto.id</p>
+          <p>WA: +62 812-3456-7890</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Seni Crypto</p>
+      <div>IG • TW • YT</div>
     </div>
-</div>
+  </footer>
+
+  <script>
+    // FOOTER YEAR
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // MOBILE MENU
+    const menuBtn = document.getElementById("menu-btn");
+    menuBtn.addEventListener("click", () => {
+      const nav = document.querySelector(".nav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+      nav.style.flexDirection = "column";
+      nav.style.background = "rgba(0,0,0,0.8)";
+      nav.style.position = "absolute";
+      nav.style.top = "60px";
+      nav.style.right = "20px";
+      nav.style.padding = "15px";
+      nav.style.borderRadius = "10px";
+    });
+
+    // TESTIMONIALS
+    const testi = document.querySelectorAll(".testi");
+    let idx = 0;
+    function show(i){
+      testi.forEach((t,j)=>t.classList.toggle("active", j===i));
+    }
+    document.getElementById("next-t").onclick = ()=>{ idx = (idx+1)%testi.length; show(idx); };
+    document.getElementById("prev-t").onclick = ()=>{ idx = (idx-1+testi.length)%testi.length; show(idx); };
+  </script>
 
 </body>
 </html>
